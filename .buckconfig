@@ -1,0 +1,9 @@
+[cells]
+  root = .
+
+[cell_aliases]
+  config //= root//
+  ovr_config //= root//
+
+[external_cells]
+  prelude = bundled

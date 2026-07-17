@@ -1,0 +1,17 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Buck2
+        run: |
+          curl -fsSL https://github.com/facebook/buck2/releases/latest/download/buck2-x86_64-unknown-linux-musl.zst -o buck2.zst
+          zstd -d buck2.zst -o /usr/local/bin/buck2
+          chmod +x /usr/local/bin/buck2
+          buck2 --version
+      - uses: testquorum/action@main
